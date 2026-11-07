@@ -2,11 +2,10 @@
 
 import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { RegistrationForm } from "@/components/landing/RegistrationForm";
 import { Footer } from "@/components/landing/Footer";
-import { QrCode, CheckCircle2, Sparkles, AlertCircle, ArrowLeft } from "lucide-react";
+import { QrCode, CheckCircle2 } from "lucide-react";
 
 function EnterPageContent() {
   const searchParams = useSearchParams();
@@ -46,21 +45,21 @@ function EnterPageContent() {
             className={`p-6 rounded-3xl border flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg ${
               isValid === false
                 ? "bg-rose-50 border-rose-200 text-rose-900"
-                : "bg-gradient-to-r from-blue-900 via-blue-950 to-blue-900 border-amber-400 text-white"
+                : "bg-gradient-to-r from-[#045cb4] via-[#046bd2] to-[#045cb4] border-white/20 text-white"
             }`}
           >
             <div className="flex items-center gap-4 text-center sm:text-left">
-              <div className="w-12 h-12 rounded-2xl bg-amber-400 text-blue-950 flex items-center justify-center font-bold text-xl shrink-0">
-                <QrCode className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-2xl bg-[#ffbc7d] text-[#1e293b] flex items-center justify-center font-bold text-xl shrink-0">
+                <QrCode className="w-6 h-6 text-[#da0e2f]" />
               </div>
               <div>
-                <span className="text-[11px] font-bold tracking-widest uppercase text-amber-300 block">
+                <span className="text-[11px] font-bold tracking-widest uppercase text-[#ffbc7d] block">
                   Scanned Tub Code Detected
                 </span>
-                <p className="font-mono font-extrabold text-2xl text-amber-400">
+                <p className="font-mono font-extrabold text-2xl text-white">
                   {code}
                 </p>
-                <p className="text-xs text-blue-200 mt-0.5">
+                <p className="text-xs text-white/80 mt-0.5">
                   {validating ? "Validating your tub code..." : message || "Code verified! Complete your entry below."}
                 </p>
               </div>
@@ -84,12 +83,12 @@ function EnterPageContent() {
 
 export default function EnterPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-[#F0F5FA]">
       <Navbar />
       <main className="flex-1">
         <Suspense
           fallback={
-            <div className="py-32 text-center text-slate-500">
+            <div className="py-32 text-center text-[#64748b]">
               Loading entry screen...
             </div>
           }
@@ -101,4 +100,3 @@ export default function EnterPage() {
     </div>
   );
 }
-

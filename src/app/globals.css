@@ -1,11 +1,32 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: "Baloo Da 2", cursive, sans-serif;
+  --font-sans: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-meridian-blue: #046bd2;
+  --color-meridian-blue-dark: #045cb4;
+  --color-meridian-blue-deep: #0a3d78;
+  --color-meridian-red: #da0e2f;
+  --color-meridian-red-dark: #bf001f;
+  --color-meridian-cream: #ffbc7d;
+  --color-meridian-ice: #f0f5fa;
+  --color-meridian-slate: #1e293b;
+  --color-meridian-body: #334155;
+  --color-meridian-muted: #64748b;
+  --color-meridian-dark: #111111;
+  --color-meridian-gold: #f59e0b;
+}
+
 :root {
-  --brand-blue: #0b3b8c;
-  --brand-blue-dark: #072559;
+  --brand-blue: #046bd2;
+  --brand-blue-dark: #045cb4;
+  --brand-red: #da0e2f;
+  --brand-cream: #ffbc7d;
+  --brand-ice: #f0f5fa;
+  --brand-slate: #1e293b;
+  --brand-dark: #111111;
   --brand-gold: #f59e0b;
-  --brand-gold-dark: #d97706;
-  --brand-cream: #fffbeb;
 }
 
 html {
@@ -13,27 +34,32 @@ html {
 }
 
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f0f5fa;
+  color: #1e293b;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom shimmer and glow animations */
+h1, h2, h3, h4, .font-display {
+  font-family: "Baloo Da 2", cursive, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle, refined animations */
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
-  50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.8); }
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .animate-shimmer {
   animation: shimmer 2.5s infinite;
 }
 
-.glow-gold {
-  animation: pulseGlow 2s infinite ease-in-out;
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
 }
