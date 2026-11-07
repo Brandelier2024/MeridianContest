@@ -1,149 +1,134 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Shield } from "lucide-react";
+import { IceCream, Phone, Mail, MapPin, Heart, Shield } from "lucide-react";
+import { BRAND } from "@/lib/constants";
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="bg-[#111111] text-white pt-16 pb-12 border-t border-neutral-800">
+    <footer className="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-800">
-          {/* Brand Info */}
-          <div className="lg:col-span-2">
-            <div className="relative w-48 h-12 mb-4">
-              <Image
-                src="/meridian-logo.svg"
-                alt="Meridian Ice Creams"
-                fill
-                className="object-contain filter brightness-0 invert"
-              />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+          
+          {/* Brand Column */}
+          <div className="space-y-4 md:col-span-1">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-400 flex items-center justify-center text-blue-950 font-black">
+                <IceCream className="w-5 h-5" />
+              </div>
+              <span className="font-black text-xl text-white tracking-wider">
+                MERIDIAN
+              </span>
             </div>
-            <p className="text-sm text-neutral-400 leading-relaxed max-w-sm mb-6">
-              Original taste and premium quality in every scoop. Celebrating over 25 years of authentic dairy ice creams across Pune, Mumbai, and Maharashtra.
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Crafting authentic dairy ice creams in Pune since 1999. Made with 100% pure milk and natural seasonal fruits.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-neutral-300">
-              <Shield className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Official Festive Campaign 2026 — Verified &amp; Certified</span>
-            </div>
+            <p className="text-[11px] text-amber-300 font-serif italic">
+              &quot;{BRAND.subtagline}&quot;
+            </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-4">
-              Campaign
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+              Contest Navigation
             </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-300">
+            <ul className="space-y-2 text-xs">
               <li>
-                <a href="#prizes" className="hover:text-[#dc1e43] transition-colors">
-                  Grand Prizes
-                </a>
-              </li>
-              <li>
-                <a href="#how-it-works" className="hover:text-[#dc1e43] transition-colors">
+                <a href="#how-it-works" className="hover:text-amber-300 transition-colors">
                   How It Works
                 </a>
               </li>
               <li>
-                <Link href="/enter" className="hover:text-[#dc1e43] transition-colors">
-                  Enter Code / Scan QR
-                </Link>
+                <a href="#prizes" className="hover:text-amber-300 transition-colors">
+                  Helicopter &amp; Movie Prizes
+                </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-[#dc1e43] transition-colors">
-                  Contest Rules &amp; FAQ
+                <a href="#register" className="hover:text-amber-300 transition-colors">
+                  Enter Lucky Draw
+                </a>
+              </li>
+              <li>
+                <a href="#flavors" className="hover:text-amber-300 transition-colors">
+                  Flavour Menu
+                </a>
+              </li>
+              <li>
+                <a href="#outlets" className="hover:text-amber-300 transition-colors">
+                  Pune Parlours
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Menu & Parlours */}
+          {/* Contest T&C & Security */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-4">
-              Explore
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+              Fair Play &amp; Security
             </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-300">
+            <ul className="space-y-2 text-xs">
+              <li className="flex items-center gap-1.5 text-slate-400">
+                <Shield className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Anti-Duplication Protection</span>
+              </li>
               <li>
-                <a href="#flavours" className="hover:text-[#dc1e43] transition-colors">
-                  Signature Flavours
+                <a href="#faq" className="hover:text-amber-300 transition-colors">
+                  Contest Rules &amp; Regulations
                 </a>
               </li>
               <li>
-                <a href="#stores" className="hover:text-[#dc1e43] transition-colors">
-                  Find Nearest Parlour
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://meridianicecreams.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#dc1e43] transition-colors"
-                >
-                  Official Meridian Website
+                <a href="#faq" className="hover:text-amber-300 transition-colors">
+                  Prize Verification Terms
                 </a>
               </li>
               <li>
                 <a
-                  href="https://meridianicecreams.com/franchise/"
+                  href={BRAND.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#dc1e43] transition-colors"
+                  className="hover:text-amber-300 transition-colors"
                 >
-                  Franchise Enquiries
+                  Visit Official Website →
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact Support */}
+          {/* Contact & Support */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-4">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
               Customer Support
             </h4>
-            <ul className="space-y-3 text-sm text-neutral-300">
+            <ul className="space-y-2.5 text-xs">
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#dc1e43]" />
-                <a href="tel:+912025654488" className="hover:text-white">
-                  +91 20 2565 4488
-                </a>
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Head Office: Pune, Maharashtra</span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#dc1e43]" />
-                <a href="mailto:support@meridianicecreams.com" className="hover:text-white">
-                  support@meridianicecreams.com
-                </a>
+                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>contest@meridianicecreams.com</span>
               </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#dc1e43] shrink-0 mt-0.5" />
-                <span className="text-xs text-neutral-400">
-                  Meridian House, FC Road, Shivajinagar, Pune 411004
-                </span>
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Mon-Sat • 10 AM to 7 PM</span>
               </li>
             </ul>
           </div>
+
         </div>
 
-        {/* Bottom Legal Notice */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-          <p>
-            &copy; {new Date().getFullYear()} Meridian Ice Creams. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>© {new Date().getFullYear()} Meridian Ice Creams. All rights reserved.</p>
+          <p className="flex items-center gap-1">
+            <span>The Real Indian Taste</span>
+            <span>•</span>
+            <span>Pune, India</span>
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#faq" className="hover:text-neutral-300">
-              Terms &amp; Conditions
-            </a>
-            <a href="#faq" className="hover:text-neutral-300">
-              Privacy Policy
-            </a>
-            <a href="#faq" className="hover:text-neutral-300">
-              Contest Guidelines
-            </a>
-          </div>
         </div>
       </div>
     </footer>
   );
 }
-
