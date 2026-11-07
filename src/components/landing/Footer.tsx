@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Phone, Mail, MapPin, Shield, ExternalLink } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 
@@ -46,14 +47,9 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#3d-tub" className="hover:text-[#ffbc7d] transition-colors">
-                  3D Tub Experience
-                </a>
-              </li>
-              <li>
-                <a href="#register" className="hover:text-[#ffbc7d] transition-colors">
-                  Enter Lucky Draw
-                </a>
+                <Link href="/enter" className="hover:text-[#ffbc7d] transition-colors text-[#ffbc7d] font-semibold">
+                  Enter Lucky Draw →
+                </Link>
               </li>
               <li>
                 <a href="#flavors" className="hover:text-[#ffbc7d] transition-colors">

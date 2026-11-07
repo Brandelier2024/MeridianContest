@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Check, ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Check, ArrowRight } from "lucide-react";
 
 export function FlavorShowcase() {
   const [activeCategory, setActiveCategory] = useState<"all" | "featured" | "fruit" | "rich" | "sugarfree">("all");
@@ -72,7 +73,7 @@ export function FlavorShowcase() {
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#046bd2]/10 text-[#046bd2] text-xs font-bold tracking-wider uppercase mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#dc1e43]/10 text-[#dc1e43] text-xs font-bold tracking-wider uppercase mb-3">
             <span>The Real Indian Taste • 100% Pure Milk</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1e293b] font-display tracking-tight">
@@ -98,8 +99,8 @@ export function FlavorShowcase() {
                 onClick={() => setActiveCategory(tab.id)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
                   activeCategory === tab.id
-                    ? "bg-[#046bd2] text-white shadow-md scale-105"
-                    : "bg-[#F0F5FA] text-[#334155] hover:bg-slate-200"
+                    ? "bg-[#dc1e43] text-white shadow-md scale-105"
+                    : "bg-[#fdf8f7] text-[#334155] hover:bg-[#fff0f3]"
                 }`}
               >
                 {tab.label}
@@ -113,7 +114,7 @@ export function FlavorShowcase() {
           {filtered.map((flv) => (
             <div
               key={flv.name}
-              className="group bg-[#F0F5FA]/60 hover:bg-white rounded-3xl overflow-hidden border border-[#D1D5DB]/70 hover:border-[#046bd2] transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              className="group bg-[#fdf8f7]/70 hover:bg-white rounded-3xl overflow-hidden border border-[#D1D5DB]/70 hover:border-[#dc1e43] transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
             >
               <div>
                 {/* Image & Badge */}
@@ -126,7 +127,7 @@ export function FlavorShowcase() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   
-                  <div className="absolute top-3 left-3 bg-[#111111]/80 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-[#ffbc7d] border border-white/10">
+                  <div className="absolute top-3 left-3 bg-[#111111]/80 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-white border border-white/10">
                     {flv.badge}
                   </div>
 
@@ -134,7 +135,7 @@ export function FlavorShowcase() {
                     <span className="text-xs font-semibold bg-black/40 backdrop-blur-sm px-2.5 py-0.5 rounded-full">
                       {flv.tag}
                     </span>
-                    <span className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs text-white">
+                    <span className="w-6 h-6 rounded-full bg-[#dc1e43] flex items-center justify-center text-xs text-white">
                       <Check className="w-3.5 h-3.5" />
                     </span>
                   </div>
@@ -142,7 +143,7 @@ export function FlavorShowcase() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#1e293b] font-display group-hover:text-[#046bd2] transition-colors mb-2">
+                  <h3 className="text-xl font-bold text-[#1e293b] font-display group-hover:text-[#dc1e43] transition-colors mb-2">
                     {flv.name}
                   </h3>
                   <p className="text-sm text-[#334155] leading-relaxed">
@@ -153,13 +154,13 @@ export function FlavorShowcase() {
 
               {/* Card Action */}
               <div className="px-6 pb-6 pt-2">
-                <a
-                  href="#register"
-                  className="w-full py-2.5 rounded-xl text-xs font-bold text-[#046bd2] bg-white group-hover:bg-[#046bd2] group-hover:text-white border border-[#046bd2]/40 text-center flex items-center justify-center gap-1.5 transition-colors shadow-xs"
+                <Link
+                  href="/enter"
+                  className="w-full py-2.5 rounded-xl text-xs font-bold text-[#dc1e43] bg-white group-hover:bg-[#dc1e43] group-hover:text-white border border-[#dc1e43]/30 text-center flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                 >
                   <span>Enter Contest With This Tub</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}

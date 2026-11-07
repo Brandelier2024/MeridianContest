@@ -38,7 +38,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased selection:bg-[#046bd2] selection:text-white bg-[#F0F5FA] text-[#1e293b]">
+      <body className="antialiased selection:bg-[#dc1e43] selection:text-white bg-[#fdf8f7] text-[#1e293b]">
         {children}
       </body>
     </html>

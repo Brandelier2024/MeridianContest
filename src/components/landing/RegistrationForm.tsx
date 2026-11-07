@@ -178,12 +178,12 @@ export function RegistrationForm() {
         throw new Error(result.error || "Registration failed. Please try again.");
       }
 
-      // Trigger Confetti Celebration
+      // Trigger Confetti Celebration in Meridian Red & Gold
       confetti({
         particleCount: 120,
         spread: 80,
         origin: { y: 0.6 },
-        colors: ["#0b3b8c", "#f59e0b", "#38bdf8", "#e11d48"],
+        colors: ["#dc1e43", "#ffbc7d", "#b81435", "#e11d48"],
       });
 
       setSubmissionSuccess({
@@ -201,13 +201,13 @@ export function RegistrationForm() {
   };
 
   return (
-    <section id="register" className="py-20 md:py-28 bg-[#F0F5FA] relative">
+    <section id="register" className="py-12 md:py-16 bg-[#fdf8f7] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Form Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#046bd2]/10 text-[#046bd2] text-xs font-bold uppercase tracking-wider mb-3">
-            <QrCode className="w-3.5 h-3.5 text-[#046bd2]" />
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#dc1e43]/10 text-[#dc1e43] text-xs font-bold uppercase tracking-wider mb-3">
+            <QrCode className="w-3.5 h-3.5 text-[#dc1e43]" />
             <span>Official Entry Portal</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1e293b] font-display tracking-tight">
@@ -220,7 +220,7 @@ export function RegistrationForm() {
 
         {/* Success Ticket View */}
         {submissionSuccess ? (
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border-2 border-amber-400 text-center relative overflow-hidden animate-in fade-in zoom-in duration-300">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border-2 border-[#ffbc7d] text-center relative overflow-hidden animate-in fade-in zoom-in duration-300">
             <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-md">
               <CheckCircle2 className="w-10 h-10" />
             </div>
@@ -237,7 +237,7 @@ export function RegistrationForm() {
             </p>
 
             {/* Lucky Draw Ticket Card */}
-            <div className="max-w-md mx-auto bg-gradient-to-r from-[#045cb4] to-[#046bd2] text-white rounded-2xl p-6 shadow-xl border border-white/20 text-left relative overflow-hidden mb-8">
+            <div className="max-w-md mx-auto bg-gradient-to-r from-[#8c0d25] via-[#dc1e43] to-[#b81435] text-white rounded-2xl p-6 shadow-xl border border-white/20 text-left relative overflow-hidden mb-8">
               <div className="flex items-center justify-between pb-4 border-b border-white/15 mb-4">
                 <div>
                   <span className="text-[10px] text-[#ffbc7d] uppercase tracking-widest font-bold">
@@ -246,26 +246,26 @@ export function RegistrationForm() {
                   <p className="font-extrabold text-lg text-white font-display">MERIDIAN ICE CREAMS</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] text-white/70 uppercase">Status</span>
+                  <span className="text-[10px] text-white/80 uppercase">Status</span>
                   <p className="text-xs font-bold text-emerald-300">ACTIVE ENTRY</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-white/70 block text-[11px]">Entry Ticket Code</span>
+                  <span className="text-white/75 block text-[11px]">Entry Ticket Code</span>
                   <span className="text-xl font-mono font-black text-[#ffbc7d] tracking-wider">
                     {submissionSuccess.entryCode}
                   </span>
                 </div>
                 <div>
-                  <span className="text-white/70 block text-[11px]">Participant Phone</span>
+                  <span className="text-white/75 block text-[11px]">Participant Phone</span>
                   <span className="font-semibold text-white">
                     +91 {submissionSuccess.mobile.replace(/(\d{4})(\d{3})(\d{3})/, "$1-***-$3")}
                   </span>
                 </div>
                 <div className="col-span-2 pt-2 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-white/70">Flavour Entered:</span>
+                  <span className="text-white/75">Flavour Entered:</span>
                   <span className="font-bold text-[#ffbc7d]">{submissionSuccess.flavor}</span>
                 </div>
               </div>
@@ -279,7 +279,7 @@ export function RegistrationForm() {
                   setCopied(true);
                   setTimeout(() => setCopied(false), 2500);
                 }}
-                className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-bold text-white bg-[#046bd2] hover:bg-[#045cb4] shadow-md transition-colors gap-2"
+                className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-bold text-white bg-[#dc1e43] hover:bg-[#b81435] shadow-md transition-colors gap-2"
               >
                 <Copy className="w-4 h-4" />
                 {copied ? "Copied to Clipboard!" : "Copy Entry Code"}
@@ -312,16 +312,16 @@ export function RegistrationForm() {
             <form onSubmit={handleSubmit} className="space-y-6">
               
               {/* Optional QR Code Pre-fill */}
-              <div className="bg-blue-50/70 p-4 rounded-2xl border border-blue-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-[#fff0f3] p-4 rounded-2xl border border-[#dc1e43]/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-900 text-amber-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#8c0d25] text-[#ffbc7d] flex items-center justify-center shrink-0">
                     <QrCode className="w-5 h-5" />
                   </div>
                   <div>
-                    <label htmlFor="qrCodeInput" className="text-xs font-bold text-blue-950 uppercase tracking-wider block">
+                    <label htmlFor="qrCodeInput" className="text-xs font-bold text-[#8c0d25] uppercase tracking-wider block">
                       Tub QR Code / Voucher Code (Optional)
                     </label>
-                    <p className="text-xs text-blue-700">
+                    <p className="text-xs text-[#b81435]">
                       If your tub has a unique code, enter it here for instant bonus entry.
                     </p>
                   </div>
@@ -332,7 +332,7 @@ export function RegistrationForm() {
                   placeholder="e.g. MRD-8924"
                   value={formData.qrCode}
                   onChange={(e) => setFormData({ ...formData, qrCode: e.target.value.toUpperCase() })}
-                  className="px-4 py-2 bg-white rounded-xl border border-blue-300 text-sm font-mono font-bold text-blue-950 uppercase focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-xs"
+                  className="px-4 py-2 bg-white rounded-xl border border-[#dc1e43]/30 text-sm font-mono font-bold text-[#8c0d25] uppercase focus:outline-none focus:ring-2 focus:ring-[#dc1e43] max-w-xs"
                 />
               </div>
 
@@ -353,7 +353,7 @@ export function RegistrationForm() {
                       placeholder="e.g. Rahul Sharma"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#dc1e43] focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
@@ -378,7 +378,7 @@ export function RegistrationForm() {
                         const val = e.target.value.replace(/\D/g, "");
                         setFormData({ ...formData, mobile: val });
                       }}
-                      className={`w-full pl-12 pr-28 py-3 bg-slate-50 border rounded-xl text-sm font-semibold focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all ${
+                      className={`w-full pl-12 pr-28 py-3 bg-slate-50 border rounded-xl text-sm font-semibold focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#dc1e43] focus:border-transparent transition-all ${
                         otpVerified ? "border-emerald-500 bg-emerald-50/30 text-emerald-900" : "border-slate-300"
                       }`}
                     />
@@ -395,7 +395,7 @@ export function RegistrationForm() {
                           type="button"
                           onClick={handleSendOtp}
                           disabled={otpLoading || formData.mobile.length !== 10 || otpTimer > 0}
-                          className="px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-[#046bd2] hover:bg-[#045cb4] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm transition-all"
+                          className="px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-[#dc1e43] hover:bg-[#b81435] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm transition-all"
                         >
                           {otpLoading ? (
                             <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -413,13 +413,13 @@ export function RegistrationForm() {
 
               {/* OTP Input Field (Appears when OTP is sent) */}
               {otpSent && !otpVerified && (
-                <div className="p-4 bg-[#F0F5FA] rounded-2xl border border-[#046bd2]/30 animate-in fade-in duration-200">
+                <div className="p-4 bg-[#fff0f3] rounded-2xl border border-[#dc1e43]/20 animate-in fade-in duration-200">
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
                     <div>
-                      <p className="text-xs font-bold text-[#1e293b] uppercase">
+                      <p className="text-xs font-bold text-[#8c0d25] uppercase">
                         Enter 6-Digit OTP Sent to +91 {formData.mobile}
                       </p>
-                      <p className="text-[11px] text-[#64748b]">
+                      <p className="text-[11px] text-[#b81435]">
                         Check your SMS for the verification code.
                       </p>
                     </div>
@@ -430,13 +430,13 @@ export function RegistrationForm() {
                         placeholder="123456"
                         value={otpCode}
                         onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ""))}
-                        className="w-32 px-3 py-2 text-center text-base tracking-widest font-mono font-bold bg-white border border-[#046bd2]/50 rounded-xl focus:ring-2 focus:ring-[#046bd2] focus:outline-none"
+                        className="w-32 px-3 py-2 text-center text-base tracking-widest font-mono font-bold bg-white border border-[#dc1e43]/40 rounded-xl focus:ring-2 focus:ring-[#dc1e43] focus:outline-none"
                       />
                       <button
                         type="button"
                         onClick={handleVerifyOtp}
                         disabled={otpLoading || otpCode.length !== 6}
-                        className="px-4 py-2 bg-[#046bd2] hover:bg-[#045cb4] text-white rounded-xl text-xs font-bold disabled:opacity-50 transition-colors shadow-sm"
+                        className="px-4 py-2 bg-[#dc1e43] hover:bg-[#b81435] text-white rounded-xl text-xs font-bold disabled:opacity-50 transition-colors shadow-sm"
                       >
                         {otpLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirm OTP"}
                       </button>
@@ -467,7 +467,7 @@ export function RegistrationForm() {
                       placeholder="e.g. rahul@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#dc1e43] focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
@@ -484,7 +484,7 @@ export function RegistrationForm() {
                       id="citySelect"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#dc1e43] focus:border-transparent transition-all"
                     >
                       <option value="Pune">Pune</option>
                       <option value="Pimpri-Chinchwad">Pimpri-Chinchwad (PCMC)</option>
@@ -512,7 +512,7 @@ export function RegistrationForm() {
                       id="flavorSelect"
                       value={formData.flavor}
                       onChange={(e) => setFormData({ ...formData, flavor: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#dc1e43] focus:border-transparent transition-all"
                     >
                       {MERIDIAN_FLAVORS.map((flv) => (
                         <option key={flv} value={flv}>
@@ -537,7 +537,7 @@ export function RegistrationForm() {
                       placeholder="e.g. INV-10492"
                       value={formData.billNumber}
                       onChange={(e) => setFormData({ ...formData, billNumber: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#dc1e43] focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
@@ -558,11 +558,11 @@ export function RegistrationForm() {
                   id="terms"
                   checked={formData.agreedToTerms}
                   onChange={(e) => setFormData({ ...formData, agreedToTerms: e.target.checked })}
-                  className="w-4 h-4 mt-1 rounded text-blue-900 border-slate-300 focus:ring-blue-500"
+                  className="w-4 h-4 mt-1 rounded text-[#dc1e43] border-slate-300 focus:ring-[#dc1e43]"
                 />
                 <label htmlFor="terms" className="text-xs text-slate-600 leading-relaxed">
                   I agree to the{" "}
-                  <a href="#faq" className="text-blue-800 underline font-semibold">
+                  <a href="/#faq" className="text-[#dc1e43] underline font-semibold">
                     Contest Terms &amp; Conditions
                   </a>
                   . I understand that winners must present valid identification (such as PAN, Voter ID, or DL) upon claiming the prize.
@@ -579,7 +579,7 @@ export function RegistrationForm() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full min-h-[44px] py-4 rounded-2xl font-bold text-base text-white bg-[#046bd2] hover:bg-[#045cb4] shadow-lg shadow-[#046bd2]/25 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full min-h-[44px] py-4 rounded-2xl font-bold text-base text-white bg-[#dc1e43] hover:bg-[#b81435] shadow-lg shadow-[#dc1e43]/25 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {submitting ? (
                   <>
@@ -602,4 +602,3 @@ export function RegistrationForm() {
     </section>
   );
 }
-

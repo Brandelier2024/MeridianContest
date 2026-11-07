@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { Play, QrCode, ArrowRight, X, Award, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import { Play, QrCode, ArrowRight, X, Award } from "lucide-react";
 
 export function Hero() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -24,10 +24,10 @@ export function Hero() {
   }, [videoModalOpen]);
 
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#046bd2] via-[#045cb4] to-[#046bd2] text-white">
-      {/* Soft background ambient dairy lighting */}
+    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#dc1e43] via-[#b81435] to-[#dc1e43] text-white">
+      {/* Soft background ambient lighting */}
       <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#ffbc7d]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-black/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -36,8 +36,8 @@ export function Hero() {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
             {/* Authentic Brand Crest Pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[#ffbc7d] text-xs font-bold tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-[#da0e2f]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse" />
               <span>Pune&apos;s Favourite Dairy Ice Cream • Since 1999</span>
             </div>
 
@@ -54,22 +54,22 @@ export function Hero() {
 
             {/* CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a
-                href="#register"
-                className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-7 py-3.5 rounded-2xl text-sm font-bold text-[#1e293b] bg-[#ffbc7d] hover:bg-[#fed7aa] shadow-lg shadow-black/10 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 group"
+              <Link
+                href="/enter"
+                className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-7 py-3.5 rounded-2xl text-sm font-bold text-[#dc1e43] bg-white hover:bg-[#fff0f3] shadow-lg shadow-black/10 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 group"
               >
-                <QrCode className="w-4 h-4 mr-2.5 text-[#da0e2f]" />
+                <QrCode className="w-4 h-4 mr-2.5 text-[#dc1e43]" />
                 <span>Scan &amp; Enter Lucky Draw</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
 
               <button
                 type="button"
                 onClick={() => setVideoModalOpen(true)}
                 className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-6 py-3.5 rounded-2xl text-sm font-bold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 transition-all duration-200"
               >
-                <div className="w-7 h-7 rounded-full bg-[#da0e2f] flex items-center justify-center mr-2.5 shadow-xs">
-                  <Play className="w-3.5 h-3.5 text-white fill-white ml-0.5" />
+                <div className="w-7 h-7 rounded-full bg-white text-[#dc1e43] flex items-center justify-center mr-2.5 shadow-xs">
+                  <Play className="w-3.5 h-3.5 text-[#dc1e43] fill-[#dc1e43] ml-0.5" />
                 </div>
                 <span>Watch Campaign Video (10s)</span>
               </button>
@@ -95,11 +95,11 @@ export function Hero() {
 
           {/* Right Column: Authentic Campaign Video Card */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white/25 bg-[#045cb4]">
+            <div className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white/25 bg-[#8c0d25]">
               
               {/* Campaign Header Tag */}
               <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#111111]/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-bold text-white">
-                <span className="w-2 h-2 rounded-full bg-[#da0e2f] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse" />
                 <span>Official TV Commercial</span>
               </div>
 
@@ -113,11 +113,11 @@ export function Hero() {
                   playsInline
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#045cb4] via-transparent to-black/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#8c0d25] via-transparent to-black/20 pointer-events-none" />
               </div>
 
               {/* Bottom Card Strip */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#045cb4] via-[#045cb4]/95 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#8c0d25] via-[#8c0d25]/95 to-transparent">
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-[11px] text-[#ffbc7d] font-bold uppercase tracking-wider block">
@@ -127,12 +127,12 @@ export function Hero() {
                       Buy Any Flavour Tub
                     </h3>
                   </div>
-                  <a
-                    href="#register"
-                    className="min-h-[44px] inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-bold text-[#1e293b] bg-white hover:bg-[#ffbc7d] shadow-sm transition-colors"
+                  <Link
+                    href="/enter"
+                    className="min-h-[44px] inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-bold text-[#dc1e43] bg-white hover:bg-[#fff0f3] shadow-sm transition-colors"
                   >
                     Enter Draw
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -140,8 +140,8 @@ export function Hero() {
 
             {/* Verified Winner Micro-Card */}
             <div className="absolute -bottom-5 -left-5 bg-white text-[#1e293b] p-3.5 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#da0e2f]/10 text-[#da0e2f] flex items-center justify-center font-bold">
-                <Award className="w-5 h-5 text-[#da0e2f]" />
+              <div className="w-10 h-10 rounded-xl bg-[#dc1e43]/10 text-[#dc1e43] flex items-center justify-center font-bold">
+                <Award className="w-5 h-5 text-[#dc1e43]" />
               </div>
               <div>
                 <p className="text-xs font-bold text-[#1e293b]">Helicopter Joyride Draw</p>

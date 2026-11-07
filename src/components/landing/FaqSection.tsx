@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle, ShieldCheck } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -43,8 +43,8 @@ export function FaqSection() {
         
         {/* Section Heading */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#046bd2]/10 text-[#046bd2] text-xs font-bold tracking-wider uppercase mb-3">
-            <HelpCircle className="w-3.5 h-3.5 text-[#046bd2]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#dc1e43]/10 text-[#dc1e43] text-xs font-bold tracking-wider uppercase mb-3">
+            <HelpCircle className="w-3.5 h-3.5 text-[#dc1e43]" />
             <span>Got Questions?</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1e293b] font-display tracking-tight">
@@ -67,14 +67,14 @@ export function FaqSection() {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 bg-[#F0F5FA]/60 hover:bg-[#F0F5FA] transition-colors"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 bg-[#fdf8f7]/60 hover:bg-[#fff0f3] transition-colors"
                 >
                   <span className="font-bold text-[#1e293b] text-sm sm:text-base">
                     {item.q}
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 text-slate-500 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-[#046bd2]" : ""
+                      isOpen ? "rotate-180 text-[#dc1e43]" : ""
                     }`}
                   />
                 </button>

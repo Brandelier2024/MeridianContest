@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ShoppingBag, QrCode, Trophy, ArrowRight } from "lucide-react";
 
 export function HowItWorks() {
@@ -33,12 +34,12 @@ export function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 md:py-28 bg-[#F0F5FA] relative">
+    <section id="how-it-works" className="py-20 md:py-28 bg-[#fdf8f7] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#046bd2]/10 text-[#046bd2] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#dc1e43]/10 text-[#dc1e43] text-xs font-bold uppercase tracking-wider mb-3">
             <span>3 Simple Steps • 100% Transparent</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1e293b] font-display tracking-tight">
@@ -56,7 +57,7 @@ export function HowItWorks() {
             return (
               <div
                 key={item.step}
-                className="group bg-white rounded-3xl overflow-hidden border border-[#D1D5DB]/70 hover:border-[#046bd2] transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+                className="group bg-white rounded-3xl overflow-hidden border border-[#D1D5DB]/70 hover:border-[#dc1e43] transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
               >
                 <div>
                   {/* Real Campaign Frame Still */}
@@ -70,7 +71,7 @@ export function HowItWorks() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
                     {/* Step Number Badge */}
-                    <div className="absolute top-4 left-4 w-10 h-10 rounded-2xl bg-[#046bd2] text-white flex items-center justify-center font-black text-sm shadow-md font-display">
+                    <div className="absolute top-4 left-4 w-10 h-10 rounded-2xl bg-[#dc1e43] text-white flex items-center justify-center font-black text-sm shadow-md font-display">
                       {item.step}
                     </div>
 
@@ -83,10 +84,10 @@ export function HowItWorks() {
 
                   {/* Text Content */}
                   <div className="p-6">
-                    <div className="w-10 h-10 rounded-xl bg-[#046bd2]/10 text-[#046bd2] flex items-center justify-center mb-4">
-                      <Icon className="w-5 h-5 text-[#046bd2]" />
+                    <div className="w-10 h-10 rounded-xl bg-[#dc1e43]/10 text-[#dc1e43] flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-[#dc1e43]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#1e293b] font-display mb-2 group-hover:text-[#046bd2] transition-colors">
+                    <h3 className="text-xl font-bold text-[#1e293b] font-display mb-2 group-hover:text-[#dc1e43] transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-sm text-[#334155] leading-relaxed">
@@ -96,13 +97,13 @@ export function HowItWorks() {
                 </div>
 
                 <div className="px-6 pb-6 pt-2">
-                  <a
-                    href="#register"
-                    className="w-full py-2.5 rounded-xl text-xs font-bold text-[#046bd2] bg-[#F0F5FA] group-hover:bg-[#046bd2] group-hover:text-white text-center flex items-center justify-center gap-1.5 transition-colors border border-slate-200 group-hover:border-[#046bd2]"
+                  <Link
+                    href="/enter"
+                    className="w-full py-2.5 rounded-xl text-xs font-bold text-[#dc1e43] bg-[#fff0f3] group-hover:bg-[#dc1e43] group-hover:text-white text-center flex items-center justify-center gap-1.5 transition-colors border border-[#dc1e43]/20 group-hover:border-[#dc1e43]"
                   >
                     <span>Proceed to Step {item.step}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             );
