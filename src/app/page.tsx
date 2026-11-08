@@ -1,26 +1,35 @@
 import React from "react";
-import { Navbar } from "@/components/landing/Navbar";
-import { Hero } from "@/components/landing/Hero";
-import { HowItWorks } from "@/components/landing/HowItWorks";
-import { PrizeShowcase } from "@/components/landing/PrizeShowcase";
-import { FlavorShowcase } from "@/components/landing/FlavorShowcase";
-import { StoreLocator } from "@/components/landing/StoreLocator";
-import { FaqSection } from "@/components/landing/FaqSection";
-import { Footer } from "@/components/landing/Footer";
+import { SmoothScrollProvider } from "@/components/motion/SmoothScrollProvider";
+import { Navbar } from "@/components/navigation/Navbar";
+import { OpeningHeroSection } from "@/components/sections/OpeningHeroSection";
+import { ChurnSequenceSection } from "@/components/sections/ChurnSequenceSection";
+import { BrandRuleSection } from "@/components/sections/BrandRuleSection";
+import { SignatureTubsSection } from "@/components/sections/SignatureTubsSection";
+import { LuckyDrawSection } from "@/components/sections/LuckyDrawSection";
+import { PuneVoicesSection } from "@/components/sections/PuneVoicesSection";
+import { WeeklyDrawsSection } from "@/components/sections/WeeklyDrawsSection";
+import { ParloursSection } from "@/components/sections/ParloursSection";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { BrandFooter } from "@/components/sections/BrandFooter";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#fdf8f7]">
+    <SmoothScrollProvider>
       <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <HowItWorks />
-        <PrizeShowcase />
-        <FlavorShowcase />
-        <StoreLocator />
+      <main>
+        <OpeningHeroSection />
+        <ChurnSequenceSection />
+        <BrandRuleSection />
+        <SignatureTubsSection />
+        <LuckyDrawSection />
+        <PuneVoicesSection />
+        <WeeklyDrawsSection />
+        <ParloursSection />
         <FaqSection />
+        <ContactSection />
       </main>
-      <Footer />
-    </div>
+      <BrandFooter />
+    </SmoothScrollProvider>
   );
 }
