@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { LiftText } from "@/components/ui/LiftText";
 import { gsap } from "@/lib/animation";
+import { createGenericPlaceholder } from "@/lib/placeholders";
 
 const PUNE_VOICES = [
   {
@@ -13,6 +13,7 @@ const PUNE_VOICES = [
     quote: "Every Sunday after misal, one family tub of Alphonso Mango. Twenty-five years, never skipped a single week.",
     image: "/images/sec_02.png",
     alt: "Kaka Deshmukh, loyal Pune customer",
+    fallback: createGenericPlaceholder("Kaka Deshmukh", "FC Road Regular", 400, 400, "#260c0c", "#ffbc7d"),
   },
   {
     name: "Pooja & Rohan",
@@ -20,6 +21,7 @@ const PUNE_VOICES = [
     quote: "Scanned our Honey Nut tub on Friday night. Got our OTP confirmation in five seconds. Fingers crossed for the helicopter ride!",
     image: "/images/sec_04.png",
     alt: "Pooja and Rohan, contest participants",
+    fallback: createGenericPlaceholder("Pooja & Rohan", "Kothrud Couple", 400, 400, "#102d1d", "#86efac"),
   },
   {
     name: "Aarav Joshi",
@@ -27,6 +29,7 @@ const PUNE_VOICES = [
     quote: "Two scoops of Real Sitaphal in a fresh waffle cone after cricket at Deccan. Best pure dairy cream in Maharashtra.",
     image: "/images/sec_00.png",
     alt: "Aarav Joshi, regular visitor",
+    fallback: createGenericPlaceholder("Aarav Joshi", "Camp Parlour", 400, 400, "#5c2406", "#fbbf24"),
   },
   {
     name: "Dr. Meera Patil",
@@ -34,6 +37,7 @@ const PUNE_VOICES = [
     quote: "Zero vegetable oil aftertaste. You can taste the 100% pure whole milk in the first spoonful. True authentic dairy craftsmanship.",
     image: "/images/sec_08.png",
     alt: "Dr. Meera Patil, dairy food lover",
+    fallback: createGenericPlaceholder("Dr. Meera Patil", "Bavdhan Connoisseur", 400, 400, "#1c0d0d", "#ffdd78"),
   },
 ];
 
@@ -85,13 +89,20 @@ export function PuneVoicesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="regulars" data-8b-section="people" data-ground="light" aria-labelledby="voices-title">
+    <section
+      ref={sectionRef}
+      id="people"
+      data-8b-section="people"
+      data-ground="light"
+      aria-labelledby="people-title"
+    >
+      <span id="regulars" className="sr-only" tabIndex={-1} aria-hidden="true" />
       <WaveDivider swell />
 
       <div className="people__head">
         <div>
           <span className="m-text-4">The Regulars</span>
-          <h2 className="m-text-2" id="voices-title">
+          <h2 className="m-text-2" id="people-title">
             Pune&apos;s Own
           </h2>
         </div>
@@ -104,13 +115,18 @@ export function PuneVoicesSection() {
         {PUNE_VOICES.map((person) => (
           <div key={person.name} className="person">
             <div className="person__photo">
-              <Image
+              <img
                 src={person.image}
                 alt={person.alt}
                 width={400}
                 height={400}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                style={{ background: "#4a0a10" }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = person.fallback;
+                }}
               />
               <span className="person__ring m-ring" aria-hidden="true" />
             </div>
@@ -123,4 +139,3 @@ export function PuneVoicesSection() {
     </section>
   );
 }
-

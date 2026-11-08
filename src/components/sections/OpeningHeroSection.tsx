@@ -1,12 +1,29 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { PillButton } from "@/components/ui/PillButton";
 import { LiftText } from "@/components/ui/LiftText";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { gsap } from "@/lib/animation";
+import { createTubPlaceholder, createGenericPlaceholder } from "@/lib/placeholders";
+
+const HERO_PILL_FALLBACK = createTubPlaceholder(
+  "Honey Nut Crunch",
+  "Contest Star",
+  "₹310",
+  "#2a1a08",
+  "#ffdd78"
+);
+
+const HERO_WINDOW_FALLBACK = createGenericPlaceholder(
+  "Pure Dairy Ice Cream",
+  "Since 1999 • Pune",
+  1600,
+  1067,
+  "#7a2e05",
+  "#ffdd78"
+);
 
 export function OpeningHeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -103,13 +120,17 @@ export function OpeningHeroSection() {
           <div className="opening__pill-intro">
             <div className="opening__pill-bob">
               <div className="m-pill">
-                <Image
+                <img
                   src="/images/sec_02.png"
                   alt="Meridian Honey Nut Crunch contest tub"
                   width={900}
                   height={1350}
-                  priority
                   className="w-full h-full object-cover"
+                  style={{ background: "#2a1a08" }}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = HERO_PILL_FALLBACK;
+                  }}
                 />
               </div>
             </div>
@@ -122,7 +143,7 @@ export function OpeningHeroSection() {
             Since 1999 on Pune&apos;s favourite streets. Made strictly with 100% pure whole milk and fresh seasonal fruit. Peel the secret lid seal to enter our grand helicopter lucky draw!
           </p>
           <div className="opening__actions">
-            <PillButton variant="solid" href="#tubs">
+            <PillButton variant="solid" href="#pies">
               See Our Tubs
             </PillButton>
             <PillButton variant="outline" href="/enter">
@@ -137,12 +158,17 @@ export function OpeningHeroSection() {
         <WaveDivider className="opening__wave" swell={false} />
         
         <figure className="opening__window">
-          <Image
+          <img
             src="/images/sec_00.png"
             alt="Real Alphonso Mango pure dairy ice cream scoop"
             width={1600}
             height={1067}
             className="w-full h-full object-cover"
+            style={{ background: "#7a2e05" }}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = HERO_WINDOW_FALLBACK;
+            }}
           />
         </figure>
 

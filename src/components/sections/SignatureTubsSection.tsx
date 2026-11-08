@@ -1,20 +1,21 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { WaveDivider } from "@/components/ui/WaveDivider";
-import { PillButton } from "@/components/ui/PillButton";
 import { gsap } from "@/lib/animation";
+import { createTubPlaceholder } from "@/lib/placeholders";
 
 const SIGNATURE_TUBS = [
   {
     name: "Honey Nut Crunch",
-    desc: "Golden roasted almonds and cashews tossed in raw multi-flora honey and churned dairy cream.",
+    desc: "Roasted almond and cashew crunch drenched in golden honey with velvety churned dairy cream.",
     tag: "Contest Star",
     price: "₹310",
     image: "/images/sec_02.png",
-    alt: "Honey Nut Crunch Meridian tub",
+    alt: "Honey Nut Crunch Meridian 500ml tub",
+    bgColor: "#2a1a08",
+    fallback: createTubPlaceholder("Honey Nut Crunch", "Contest Star", "₹310", "#2a1a08", "#f59e0b"),
   },
   {
     name: "Alphonso Mango",
@@ -22,7 +23,9 @@ const SIGNATURE_TUBS = [
     tag: "Pure Fruit",
     price: "₹340",
     image: "/images/sec_00.png",
-    alt: "Real Alphonso Mango Meridian tub",
+    alt: "Real Alphonso Mango Meridian 500ml tub",
+    bgColor: "#5c2406",
+    fallback: createTubPlaceholder("Alphonso Mango", "Pure Fruit", "₹340", "#5c2406", "#fbbf24"),
   },
   {
     name: "Real Sitaphal",
@@ -30,7 +33,9 @@ const SIGNATURE_TUBS = [
     tag: "Pune Signature",
     price: "₹340",
     image: "/images/sec_04.png",
-    alt: "Real Sitaphal custard apple Meridian tub",
+    alt: "Real Sitaphal custard apple Meridian 500ml tub",
+    bgColor: "#102d1d",
+    fallback: createTubPlaceholder("Real Sitaphal", "Pune Signature", "₹340", "#102d1d", "#86efac"),
   },
   {
     name: "Belgian Truffle",
@@ -38,7 +43,9 @@ const SIGNATURE_TUBS = [
     tag: "Decadent",
     price: "₹350",
     image: "/images/sec_08.png",
-    alt: "Belgian Chocolate Truffle Meridian tub",
+    alt: "Belgian Chocolate Truffle Meridian 500ml tub",
+    bgColor: "#1c0d0d",
+    fallback: createTubPlaceholder("Belgian Truffle", "Decadent", "₹350", "#1c0d0d", "#e0a96d"),
   },
 ];
 
@@ -58,6 +65,8 @@ export function SignatureTubsSection() {
         (context) => {
           const conditions = context.conditions as { wide: boolean; narrow: boolean };
           const list = el.querySelector(".pies__list") as HTMLElement;
+          if (!list) return;
+
           const cards = Array.from(list.querySelectorAll(".pie")) as HTMLElement[];
           const fan = [-12, 7, -4, 13, -8, 10];
 
@@ -134,15 +143,22 @@ export function SignatureTubsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="tubs" data-8b-section="pies" data-ground="light" aria-labelledby="tubs-title">
+    <section
+      ref={sectionRef}
+      id="pies"
+      data-8b-section="pies"
+      data-ground="light"
+      aria-labelledby="pies-title"
+    >
+      <span id="tubs" className="sr-only" tabIndex={-1} aria-hidden="true" />
       <WaveDivider swell />
 
       <div className="pies__head">
-        <h2 className="m-text-2" id="tubs-title">
+        <h2 className="m-text-2" id="pies-title">
           Signature Tubs
         </h2>
         <p className="m-text">
-          Crafted with 100% whole milk and natural Ratnagiri fruits. Churned in small batches with zero frozen dessert substitutes. Every 500ml tub carries a contest QR code under the lid.
+          Crafted with 100% whole milk and natural seasonal fruits. Four that never leave the counter, and a contest QR code under every lid.
         </p>
       </div>
 
@@ -150,13 +166,17 @@ export function SignatureTubsSection() {
         {SIGNATURE_TUBS.map((tub) => (
           <li key={tub.name} className="pie">
             <figure className="pie__photo">
-              <Image
+              <img
                 src={tub.image}
                 alt={tub.alt}
                 width={900}
                 height={1350}
-                className="w-full h-full object-cover"
                 loading="lazy"
+                style={{ background: tub.bgColor }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = tub.fallback;
+                }}
               />
             </figure>
             <div className="pie__body">
@@ -172,14 +192,13 @@ export function SignatureTubsSection() {
       </ul>
 
       <div className="pies__more">
-        <PillButton variant="solid" href="/enter">
-          Enter Lid Code in Lucky Draw →
-        </PillButton>
-        <PillButton variant="outline" href="#parlours">
-          Find Nearest Parlour
-        </PillButton>
+        <Link className="m-btn" href="/enter">
+          <span className="m-btn__label">Enter Lucky Draw</span>
+        </Link>
+        <Link className="m-text-4 m-link" href="#slices">
+          Or explore prize details
+        </Link>
       </div>
     </section>
   );
 }
-

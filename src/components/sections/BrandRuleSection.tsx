@@ -1,9 +1,18 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { LiftText } from "@/components/ui/LiftText";
 import { gsap } from "@/lib/animation";
+import { createGenericPlaceholder } from "@/lib/placeholders";
+
+const RULE_FALLBACK = createGenericPlaceholder(
+  "Every Tub Flies",
+  "Helicopter Skyline Tour",
+  900,
+  1125,
+  "#4a0a10",
+  "#ffdd78"
+);
 
 export function BrandRuleSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -147,13 +156,18 @@ export function BrandRuleSection() {
 
           <div className="rule__pill">
             <div className="m-pill">
-              <Image
+              <img
                 src="/images/sec_06.png"
                 alt="Helicopter skyline joyride experience"
                 width={900}
                 height={1125}
                 loading="lazy"
                 className="w-full h-full object-cover"
+                style={{ background: "#4a0a10" }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = RULE_FALLBACK;
+                }}
               />
             </div>
           </div>

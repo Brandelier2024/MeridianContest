@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { PillButton } from "@/components/ui/PillButton";
 import { LiftText } from "@/components/ui/LiftText";
+import { createGenericPlaceholder } from "@/lib/placeholders";
 
 const PRIZE_LIST = [
   {
@@ -29,9 +29,19 @@ const PRIZE_LIST = [
   },
 ];
 
+const SLICES_FALLBACK = createGenericPlaceholder(
+  "Helicopter Joyride",
+  "Pune Aerial Skyline Tour",
+  900,
+  1500,
+  "#4a0a10",
+  "#ffdd78"
+);
+
 export function LuckyDrawSection() {
   return (
-    <section id="prizes" data-8b-section="slices" aria-labelledby="prizes-title">
+    <section id="slices" data-8b-section="slices" aria-labelledby="slices-title">
+      <span id="prizes" className="sr-only" tabIndex={-1} aria-hidden="true" />
       <WaveDivider swell />
 
       {/* Floating Rings */}
@@ -41,13 +51,18 @@ export function LuckyDrawSection() {
       {/* Tilted Photo */}
       <div className="slices__photo" data-8b-motion="tilt">
         <div className="m-pill">
-          <Image
+          <img
             src="/images/sec_06.png"
             alt="Helicopter skyline aerial joyride over Pune"
             width={900}
             height={1500}
             className="w-full h-full object-cover"
             loading="lazy"
+            style={{ background: "#4a0a10" }}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = SLICES_FALLBACK;
+            }}
           />
         </div>
       </div>
@@ -55,7 +70,7 @@ export function LuckyDrawSection() {
       {/* Prize Content */}
       <div className="slices__text">
         <span className="m-text-4">Scan Under The Lid</span>
-        <h2 className="m-text-2" id="prizes-title">
+        <h2 className="m-text-2" id="slices-title">
           Prizes That Take You High
         </h2>
         <p className="m-text">
@@ -87,4 +102,3 @@ export function LuckyDrawSection() {
     </section>
   );
 }
-

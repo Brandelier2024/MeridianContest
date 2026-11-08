@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { PillButton } from "@/components/ui/PillButton";
 import { LiftText } from "@/components/ui/LiftText";
 import { gsap } from "@/lib/animation";
+import { createGenericPlaceholder } from "@/lib/placeholders";
 
 const OUTLETS_LIST = [
   { area: "FC Road", loc: "Opp. Goodluck Chowk, Deccan", timing: "11 AM - 11:30 PM" },
@@ -15,6 +15,15 @@ const OUTLETS_LIST = [
   { area: "Hadapsar", loc: "Magarpatta / Keshav Nagar", timing: "11 AM - 11:30 PM" },
   { area: "PCMC", loc: "Santoshi Mata Mandir Chowk, Pimpri", timing: "11 AM - 11:00 PM" },
 ];
+
+const CORNER_FALLBACK = createGenericPlaceholder(
+  "Meridian 1999",
+  "Pune Parlours",
+  340,
+  600,
+  "#2a1a08",
+  "#ffbc7d"
+);
 
 export function ParloursSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -60,7 +69,14 @@ export function ParloursSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="parlours" data-8b-section="corner" data-ground="light" aria-labelledby="parlours-title">
+    <section
+      ref={sectionRef}
+      id="corner"
+      data-8b-section="corner"
+      data-ground="light"
+      aria-labelledby="corner-title"
+    >
+      <span id="parlours" className="sr-only" tabIndex={-1} aria-hidden="true" />
       <WaveDivider swell />
 
       <div className="corner__stage">
@@ -68,7 +84,7 @@ export function ParloursSection() {
         <div className="corner__text">
           <div className="corner__head">
             <span className="m-text-4">Pune &amp; PCMC Parlours</span>
-            <h2 className="m-text-2" id="parlours-title">
+            <h2 className="m-text-2" id="corner-title">
               Find Your Nearest Parlour
             </h2>
             <p className="m-text">
@@ -116,13 +132,18 @@ export function ParloursSection() {
           </span>
           <div className="corner__photo">
             <div className="m-pill">
-              <Image
+              <img
                 src="/images/sec_02.png"
                 alt="Meridian Honey Nut Crunch Tub"
                 width={340}
                 height={600}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                style={{ background: "#2a1a08" }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = CORNER_FALLBACK;
+                }}
               />
             </div>
           </div>
