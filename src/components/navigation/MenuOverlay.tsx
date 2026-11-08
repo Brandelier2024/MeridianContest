@@ -82,6 +82,9 @@ export function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
         <Link className="m-text-2" href="/#tubs" onClick={onClose}>
           <span>Signature Tubs</span>
         </Link>
+        <Link className="m-text-2" href="/#flavours" onClick={onClose}>
+          <span>Parlour Flavours</span>
+        </Link>
         <Link className="m-text-2" href="/#churn" onClick={onClose}>
           <span>The Churn Story</span>
         </Link>

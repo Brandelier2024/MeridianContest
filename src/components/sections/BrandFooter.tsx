@@ -73,6 +73,7 @@ export function BrandFooter() {
           <h4 className="m-text-4 text-[#ffbc7d]">Contest Navigation</h4>
           <div className="footer__links">
             <Link className="m-link m-text text-sm" href="/#tubs">Signature Tubs</Link>
+            <Link className="m-link m-text text-sm" href="/#flavours">Parlour Flavours</Link>
             <Link className="m-link m-text text-sm" href="/#churn">The Churn Story</Link>
             <Link className="m-link m-text text-sm" href="/#rule">The Meridian Promise</Link>
             <Link className="m-link m-text text-sm" href="/#prizes">Helicopter Prizes</Link>

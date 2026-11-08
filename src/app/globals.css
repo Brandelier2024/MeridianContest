@@ -490,6 +490,153 @@ textarea.m-field { min-height: 104px; resize: vertical; }
   @media (max-width: 1080px) { #pies .pies__list, #tubs .pies__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 600px) { #pies .pies__list, #tubs .pies__list { grid-template-columns: minmax(0, 1fr); gap: 18px; } #pies .pie__photo, #tubs .pie__photo { aspect-ratio: 1 / .86; } }
 
+  /* Parlour Flavours Slider Carousel */
+  #flavours {
+    position: relative;
+    z-index: 4;
+    overflow-x: clip;
+    background: var(--color-2);
+    color: var(--color-3);
+    padding: var(--space-2) var(--space-1);
+  }
+  #flavours .m-wave { color: var(--color-2); }
+  #flavours .flavours__head {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    text-align: center;
+    margin-bottom: clamp(40px, 6vh, 72px);
+  }
+  #flavours .flavours__head .m-text-2 {
+    color: var(--color-1);
+    font-size: clamp(46px, 7vw, 108px);
+  }
+  #flavours .flavours__head .m-text {
+    max-width: 54ch;
+  }
+  #flavours .flavours__filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  #flavours .flavours__filter-btn {
+    padding: 8px 18px;
+    border-radius: var(--radius-1);
+    border: 1.5px solid var(--color-1);
+    background: transparent;
+    color: var(--color-1);
+    font-family: var(--font-3);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .25s;
+  }
+  #flavours .flavours__filter-btn:hover {
+    background: rgba(220, 30, 67, 0.08);
+  }
+  #flavours .flavours__filter-btn[data-active="true"] {
+    background: var(--color-1);
+    color: var(--color-2);
+  }
+  #flavours .flavours__track {
+    display: flex;
+    gap: clamp(16px, 2vw, 28px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 12px 6px 32px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #flavours .flavours__track::-webkit-scrollbar { display: none; }
+  #flavours .flavour-card {
+    flex: 0 0 clamp(240px, 22vw, 320px);
+    scroll-snap-align: start;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+    padding: 20px 18px 24px;
+    border-radius: var(--radius-2);
+    background: var(--color-1);
+    color: var(--color-2);
+    box-shadow: 0 10px 24px rgba(28, 11, 7, 0.12);
+    transition: transform .35s cubic-bezier(.3, .7, .2, 1), box-shadow .35s;
+  }
+  #flavours .flavour-card:nth-child(4n+2) { background: var(--color-6); color: var(--color-4); }
+  #flavours .flavour-card:nth-child(4n+2) .flavour-card__name { color: var(--color-4); }
+  #flavours .flavour-card:nth-child(4n+3) { background: var(--color-7); color: var(--color-2); }
+  #flavours .flavour-card:nth-child(4n+4) { background: var(--color-5); color: var(--color-4); }
+  #flavours .flavour-card:nth-child(4n+4) .flavour-card__name { color: var(--color-4); }
+  #flavours .flavour-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(28, 11, 7, 0.22);
+  }
+  #flavours .flavour-card__photo {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    margin: 4px auto 8px;
+    width: 82%;
+  }
+  #flavours .flavour-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s cubic-bezier(.3, .7, .2, 1);
+  }
+  #flavours .flavour-card:hover .flavour-card__photo img {
+    transform: scale(1.08);
+  }
+  #flavours .flavour-card__body {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    text-align: center;
+  }
+  #flavours .flavour-card__name {
+    font-size: clamp(24px, 2.2vw, 32px);
+    color: var(--color-2);
+  }
+  #flavours .flavour-card__desc {
+    font-size: 14px;
+    line-height: 1.45;
+    opacity: 0.9;
+  }
+  #flavours .flavour-card__foot {
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+  }
+  #flavours .flavours__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 24px;
+  }
+  #flavours .flavours__btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--color-1);
+    color: var(--color-2);
+    border: 1.5px solid var(--color-1);
+    cursor: pointer;
+    transition: transform .25s, background .25s, color .25s;
+  }
+  #flavours .flavours__btn:hover {
+    transform: scale(1.1);
+    background: var(--color-3);
+    border-color: var(--color-3);
+  }
+
   /* Lucky Draw Prizes (Slices Scene) */
   #slices, #prizes { position: relative; z-index: 5; overflow-x: clip; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(40px, 8vw, 128px); align-items: center; background: var(--color-1); color: var(--color-4); padding: var(--space-2) var(--space-1); }
   #slices .m-wave, #prizes .m-wave { color: var(--color-1); }

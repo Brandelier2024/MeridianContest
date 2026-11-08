@@ -195,8 +195,8 @@ export function SignatureTubsSection() {
         <Link className="m-btn" href="/enter">
           <span className="m-btn__label">Enter Lucky Draw</span>
         </Link>
-        <Link className="m-text-4 m-link" href="#slices">
-          Or explore prize details
+        <Link className="m-text-4 m-link" href="#flavours">
+          Or explore 30+ parlour flavours ↓
         </Link>
       </div>
     </section>

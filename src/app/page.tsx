@@ -5,6 +5,7 @@ import { OpeningHeroSection } from "@/components/sections/OpeningHeroSection";
 import { ChurnSequenceSection } from "@/components/sections/ChurnSequenceSection";
 import { BrandRuleSection } from "@/components/sections/BrandRuleSection";
 import { SignatureTubsSection } from "@/components/sections/SignatureTubsSection";
+import { FlavoursSliderSection } from "@/components/sections/FlavoursSliderSection";
 import { LuckyDrawSection } from "@/components/sections/LuckyDrawSection";
 import { PuneVoicesSection } from "@/components/sections/PuneVoicesSection";
 import { WeeklyDrawsSection } from "@/components/sections/WeeklyDrawsSection";
@@ -22,6 +23,7 @@ export default function Home() {
         <ChurnSequenceSection />
         <BrandRuleSection />
         <SignatureTubsSection />
+        <FlavoursSliderSection />
         <LuckyDrawSection />
         <PuneVoicesSection />
         <WeeklyDrawsSection />

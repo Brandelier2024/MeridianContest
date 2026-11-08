@@ -10,12 +10,22 @@ function encodeSvg(svgString: string): string {
   )}`;
 }
 
+function escapeXml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 export function createStepPlaceholder(
   stepNum: number,
   title: string,
   bg: string,
   accent: string
 ): string {
+  const safeTitle = escapeXml(title.toUpperCase());
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" width="900" height="1125">
       <defs>
@@ -53,7 +63,7 @@ export function createStepPlaceholder(
         <text y="-10" font-family="'Pliant', sans-serif" font-size="20" font-weight="800" fill="${accent}" letter-spacing="0.18em">STEP 0${stepNum}</text>
         
         <text y="90" font-family="'Bricolage Grotesque', sans-serif" font-size="64" font-weight="800" fill="#fdf8f7" letter-spacing="0.02em">
-          ${title.toUpperCase()}
+          ${safeTitle}
         </text>
 
         <path d="M-120 135 L120 135" stroke="${accent}" stroke-width="2" stroke-opacity="0.4"/>
@@ -81,6 +91,9 @@ export function createTubPlaceholder(
   accent: string
 ): string {
   const slug = name.toLowerCase().replace(/[^a-z0-9_-]/g, "-");
+  const safeTag = escapeXml(tag.toUpperCase());
+  const safeName = escapeXml(name.toUpperCase());
+  const safePrice = escapeXml(price);
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1350" width="900" height="1350">
       <defs>
@@ -117,11 +130,11 @@ export function createTubPlaceholder(
       <g transform="translate(450, 780)" text-anchor="middle">
         <rect x="-110" y="-32" width="220" height="40" rx="20" fill="${accent}" opacity="0.25"/>
         <text y="-7" font-family="'Pliant', sans-serif" font-size="17" font-weight="800" fill="${accent}" letter-spacing="0.16em">
-          ${tag.toUpperCase()}
+          ${safeTag}
         </text>
 
         <text y="75" font-family="'Bricolage Grotesque', sans-serif" font-size="52" font-weight="800" fill="#fdf8f7" letter-spacing="0.01em">
-          ${name.toUpperCase()}
+          ${safeName}
         </text>
 
         <text y="130" font-family="'Pliant', sans-serif" font-size="22" font-weight="700" fill="${accent}" letter-spacing="0.1em">
@@ -132,7 +145,7 @@ export function createTubPlaceholder(
         <circle cx="0" cy="170" r="4" fill="${accent}"/>
 
         <text y="240" font-family="'Montagu Slab', Georgia, serif" font-size="48" font-weight="800" fill="#fdf8f7">
-          ${price}
+          ${safePrice}
         </text>
       </g>
 
@@ -156,6 +169,8 @@ export function createGenericPlaceholder(
   bg = "#4a0a10",
   accent = "#ffbc7d"
 ): string {
+  const safeTitle = escapeXml(title.toUpperCase());
+  const safeSubtitle = escapeXml(subtitle.toUpperCase());
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
       <rect width="${width}" height="${height}" fill="${bg}"/>
@@ -163,10 +178,10 @@ export function createGenericPlaceholder(
       <circle cx="${width / 2}" cy="${height / 2}" r="${Math.min(width, height) * 0.38}" fill="none" stroke="${accent}" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.2"/>
       <g transform="translate(${width / 2}, ${height / 2})" text-anchor="middle">
         <text y="-20" font-family="'Bricolage Grotesque', sans-serif" font-size="40" font-weight="800" fill="#fdf8f7">
-          ${title.toUpperCase()}
+          ${safeTitle}
         </text>
         <text y="30" font-family="'Pliant', sans-serif" font-size="20" font-weight="700" fill="${accent}" letter-spacing="0.12em">
-          ${subtitle.toUpperCase()}
+          ${safeSubtitle}
         </text>
       </g>
     </svg>
